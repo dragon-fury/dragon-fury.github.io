@@ -151,7 +151,6 @@
     heatMap.on("click", function(hourDay) {
       if(hourDay.eventsCount > 0) {
         last = utility.highlightAndReturnClickedElement(heatMap, d3.select(this), last, (hourDay.eventsCount > 0))
-        $(".title").removeClass("hidden");
         $(".eventList").removeClass("hidden");
 
         var eventIdsForHourDay = hourDay.events;

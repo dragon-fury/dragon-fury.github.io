@@ -18,7 +18,7 @@ var utility  = (function() {
 			if(prevElement) {
 			  prevElement.style("stroke", "none");
 			}
-			
+			$(".title").removeClass("hidden");
 			parent.style("opacity", "1.0");
 			
 			if(condition)
