@@ -12,7 +12,7 @@ var eventList = (function() {
 	
 	var constructDetailsDisplay = function(eventId) {
 		var currentEvent = events[eventId];
-		var startDate = new Date(currentEvent.start.local);
+		var startDate = new Date(currentEvent.start.utc);
 		var address = currentEvent.venue.address;
 		var status = utility.handleNullValues(currentEvent.status);
 
