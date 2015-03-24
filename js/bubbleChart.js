@@ -9,10 +9,9 @@ var bubbleChart = (function() {
 
   var svg = d3.select(".bubbleChart").append("svg")
       .attr("width", width)
-      .attr("height", height);
-
-  var element = svg.append("g")
-    .attr("transform", "translate(" + margin.left + "," + (margin.top+10) + ")");
+      .attr("height", height)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + (margin.top+10) + ")");
 
   return {
     renderBubbleChart: function(categoryLookUp, categoryArray, colors) {
@@ -22,15 +21,10 @@ var bubbleChart = (function() {
           category_id = 0;
 
       // Clear all elements from bubble svg element
-      element.selectAll(".bubble").remove();
-      element.selectAll(".legend").remove();
+      svg.selectAll(".bubble").remove();
+      svg.selectAll(".legend").remove();
 
-      svg.append("text")
-        .text("Event Types")
-        .attr("class", "title")
-        .attr("transform", "translate("+width/3+", 15)");
-
-      var bubble = element.selectAll(".bubble")
+      var bubble = svg.selectAll(".bubble")
         .data(categoryArray)
         .enter().append("g")
           .attr("class", "bubble")
@@ -71,7 +65,7 @@ var bubbleChart = (function() {
         $(".category"+categoryIdToShow).removeClass("hidden");
       });
 
-      var legend = element.selectAll(".legend")
+      var legend = svg.selectAll(".legend")
           .data(categoryArray)
           .enter().append("g")
           .attr("class", "legend");
