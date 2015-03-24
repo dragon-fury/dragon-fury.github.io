@@ -96,7 +96,7 @@
     return categoryArray;
   };
 
-  d3.json('http://localhost:8800/data/data.json', function(error, json) {
+  d3.json('http://dragon-fury.github.io/data/data.json', function(error, json) {
 
     processEventsData(json);
 
