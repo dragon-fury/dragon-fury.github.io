@@ -6,9 +6,10 @@
       categories = {0: "Unknown"}; 
 
   var margin = { top: 50, right: 0, bottom: 100, left: 30 },
+      gridOffset = 2,
       width = 960,
       height = 430 - margin.top - margin.bottom,
-      blockSize = Math.floor((width - margin.left - margin.right) / 24) - 2,
+      blockSize = Math.floor((width - margin.left - margin.right) / 24) - gridOffset,
       legendElementWidth = blockSize*2,
       buckets = 5,
       colorsForComponents = d3.scale.category20(),
@@ -96,7 +97,7 @@
     return categoryArray;
   };
 
-  d3.json('http://dragon-fury.github.io/data/data.json', function(error, json) {
+  d3.json('http://localhost:8800/data/data.json', function(error, json) {
 
     processEventsData(json);
 
@@ -124,7 +125,7 @@
         .data(times)
         .enter().append("text")
           .text(function(time) { return time; })
-          .attr("x", function(d, indexOffset) { return indexOffset * blockSize; })
+          .attr("x", function(d, indexOffset) { return indexOffset * (blockSize+gridOffset); })
           .attr("y", 0)
           .style("text-anchor", "middle")
           .attr("transform", "translate(" + (blockSize / 2) + ", -6)")
@@ -136,8 +137,8 @@
     var heatMap = svg.selectAll(".hour")
         .data(data)
         .enter().append("rect")
-        .attr("x", function(hourDay) { return hourDay.hour * (blockSize+2); })
-        .attr("y", function(hourDay) { return hourDay.day * (blockSize+2); })
+        .attr("x", function(hourDay) { return hourDay.hour * (blockSize+gridOffset); })
+        .attr("y", function(hourDay) { return hourDay.day * (blockSize+gridOffset); })
         .attr("rx", 4)
         .attr("ry", 4)
         .attr("class", "hour bordered")
