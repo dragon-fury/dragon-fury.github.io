@@ -79,6 +79,7 @@ var bubbleChart = (function() {
 
       legend.append("text")
         .attr("class", "mono axis-workweek")
+        .style("font-family", "'Roboto', sans-serif")
         .text(function(category) {
             return categoryLookUp[category.category_id]; 
         })
